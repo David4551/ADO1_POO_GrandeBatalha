@@ -5,51 +5,33 @@ import java.util.Scanner;
 public class Jogador extends Criatura{
 
     Scanner sc = new Scanner(System.in);
-    private int ataquePerto = 40;
-    private int ataqueLonge = 150;
+    private Arma armaCurta;
+    private Arma armaLonga;
 
-    private Arma[] armas = {
-            new Faca(),
-            new Pistola()
-    };
-
-    public Jogador(String nome) {
+    public Jogador(String nome, Arma armaCurta, Arma armaLonga) {
         super(nome, 950);
+        this.armaCurta = armaCurta;
+        this.armaLonga = armaLonga;
     }
 
     @Override
     public void fazAtaque(Criatura alvo) {
-        System.out.println("Escolha sua arma: ");
-        int n = 0;
-        for(Arma arma : armas){
-            n++;
-            System.out.println(n + ") " );
-            arma.descricao();
-        }
-
+        System.out.println("\nEscolha sua arma: ");
+        System.out.println("1) ");
+        this.armaCurta.descricao();
+        System.out.println("2) ");
+        this.armaLonga.descricao();
 
         int escolha = sc.nextInt();
-        while (escolha < 1 || escolha > n){
+        while (escolha < 1 || escolha > 2){
             System.out.println("Número inválido, escolha outro:");
             escolha = sc.nextInt();
         }
 
-
         if (escolha == 1){
-            alvo.tomaDano(this.ataquePerto);
-        } else{
-            Random rd = new Random();
-            int sorteio = rd.nextInt(100);
-
-
-            if (sorteio >= 70){
-                alvo.tomaDano(this.ataqueLonge);
-            }else{
-                System.out.println("Ataque Falhou.");
-            }
-
-            armas[n-1].golpe(alvo);
-
+            this.armaCurta.golpe(alvo);
+        } else {
+            this.armaLonga.golpe(alvo);
         }
     }
 
@@ -63,3 +45,4 @@ public class Jogador extends Criatura{
         System.out.println("eu vou voltar pra te amassar");
     }
 }
+

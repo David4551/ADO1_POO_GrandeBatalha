@@ -1,10 +1,12 @@
 public abstract class Criatura {
     private String nome;
     private int vida;
+    private int vidaMaxima;
 
     public Criatura(String nome, int vida) {
         this.nome = nome;
         this.vida = vida;
+        this.vidaMaxima = vida;
     }
 
     public String getNome() {
@@ -17,7 +19,7 @@ public abstract class Criatura {
 
 
     public void tomaDano (int dano){
-        System.out.println(this.nome + "toma dano de " + dano);
+        System.out.println(this.nome + " toma dano de " + dano);
         this.vida -= dano;
         if (this.vida < 0){
             this.vida = 0;
@@ -28,8 +30,19 @@ public abstract class Criatura {
     }
 
     public void mostraVida(){
-        System.out.println(this.nome + "/vida" + this.vida);
+        System.out.println(this.nome + " / Vida: " + this.vida);
     }
 
+    public void restaurarVida() {
+        this.vida = this.vidaMaxima;
+    }
+
+    public int getVida() {
+        return this.vida;
+    }
+
+    public int getVidaMaxima() {
+        return this.vidaMaxima;
+    }
 
 }

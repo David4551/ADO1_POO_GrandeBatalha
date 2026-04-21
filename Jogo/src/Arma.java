@@ -13,7 +13,7 @@ public abstract class Arma {
     }
 
     public void descricao (){
-        System.out.println(this.nome + "- Dano" + this.ataque + "- Chance =" + this.chance + "%");
+        System.out.println(this.nome + " - Dano: " + this.ataque + " - Chance: " + this.chance + "%");
     }
 
     public void golpe (Criatura alvo) {
@@ -25,8 +25,19 @@ public abstract class Arma {
         } else {
             System.out.println("Ataque Falhou.");
         }
+    }
 
+    public String getNome() {
+        return this.nome;
+    }
 
+    public int getAtaque() {
+        return this.ataque;
+    }
+
+    public int getChance() {
+        return this.chance;
     }
 
 }
+

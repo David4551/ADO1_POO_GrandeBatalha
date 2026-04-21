@@ -27,4 +27,8 @@ public abstract class Inimigo extends Criatura {
     super.tomaDano(danoReduzido);
     }
 
+    public int getAtaque() {
+        return this.ataque;
+    }
+
 }
